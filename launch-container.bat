@@ -1,0 +1,1 @@
+docker run --init --entrypoint /bin/bash -p 8888:8888 --rm -ti -v C:/Users/frank/Documents/final_project/fenics:/app -w /app project:dolfin

@@ -1,0 +1,15 @@
+FROM continuumio/miniconda3
+RUN conda update conda 
+RUN conda install mamba -n base -c conda-forge
+# install fenics
+RUN mamba install fenics-ufl fenics-fiat fenics-ffc fenics-dijitso mshr petsc slepc  -c conda-forge -y
+RUN mamba install numpy matplotlib paraview jupyter -c conda-forge -y
+RUN mamba install jupyterlab -c conda-forge -y
+COPY ./fenics_shells /app/fenics_shells
+WORKDIR /app/fenics_shells
+RUN python3 setup.py install
+WORKDIR /APP
+# install mpi4py 
+pip install ipyparallel
+ENV SHELL=/bin/bash
+ENTRYPOINT ["jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]

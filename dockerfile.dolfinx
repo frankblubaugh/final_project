@@ -1,0 +1,8 @@
+FROM dolfinx/lab 
+WORKDIR /APP
+RUN pip3 install ipython
+WORKDIR /APP
+RUN pip install pyvista
+RUN pip install ipyvtklink
+ENV SHELL=/bin/bash
+ENTRYPOINT ["jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]

@@ -1,0 +1,11 @@
+# Specify filepatterns you want git to ignore.
+
+*.idea
+.ipynb_checkpoints*
+*.swp
+*.gz
+*.png
+*.xml
+*.h5
+*.xdmf
+*.msh

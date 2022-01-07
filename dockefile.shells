@@ -1,0 +1,10 @@
+FROM quay.io/fenicsproject/stable:2019.1.0.r2 
+WORKDIR /APP
+COPY ./fenics_shells /app/fenics_shells
+WORKDIR /app/fenics_shells
+RUN python3 setup.py install
+RUN pip3 install ipython
+WORKDIR /APP
+ENV OMP_NUM_THREADS=1
+ENV SHELL=/bin/bash
+ENTRYPOINT ["jupyter", "lab", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
